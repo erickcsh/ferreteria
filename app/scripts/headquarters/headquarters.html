@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Sedes</h1>
+    <button class="btn btn-primary" ui-sref="headquarterNew"> Nueva Sede </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="headquarter in vm.headquarters" ui-sref="headquarter({id: headquarter.idSede})">
+      <div class="col-xs-4">
+        <strong> Nombre: </strong>
+        <p> {{headquarter.nombre}}</p>
+      </div>
+    </div>
+  </div>
+</div>

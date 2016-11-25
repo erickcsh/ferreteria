@@ -2,6 +2,7 @@
 logs
 *.log
 npm-debug.log*
+.DS_Store
 
 # Runtime data
 pids
@@ -28,6 +29,8 @@ build/Release
 
 # Dependency directories
 node_modules
+bower_components
+dist
 jspm_packages
 
 # Optional npm cache directory
