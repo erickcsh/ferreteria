@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1> {{ vm.product.nombre }} </h1>
+    <h1> {{ vm.headquarter.nombre }} </h1>
   </div>
 </div>
 <div class="show-info-container">
@@ -9,7 +9,7 @@
       <label>Latitud:</label>
     </div>             
     <div class="col-lg-10 col-md-8 col-sm-7">
-      <span>{{ vm.product.lat }}</span>
+      <span>{{ vm.headquarter.ubicacion.x }}</span>
     </div>
   </div>
   <div class="row info-detail">   
@@ -17,13 +17,18 @@
       <label>Longitud:</label>
     </div>             
     <div class="col-lg-10 col-md-8 col-sm-7">
-      <span>{{ vm.product.lon }}</span>
+      <span>{{ vm.headquarter.ubicacion.y }}</span>
     </div>
   </div>               
 </div>                 
 <div class="row">      
   <div class="col-lg-12">
-    <button class="btn btn-primary btn-long" ui-sref="headquarterEdit({id: vm.product.idSede })"> Editar </button>
+    <!--
+    <button class="btn btn-primary btn-long" ui-sref="headquarterEdit({id: vm.headquarter.idSede })"> Editar </button>
+    -->
+    <button class="btn btn-primary btn-long" ui-sref="employees({ idSede: vm.headquarter.idSede })"> Ver Empleados </button>
+    <button class="btn btn-primary btn-long" ui-sref="employees({ idSede: vm.headquarter.idSede })"> Ver Productos </button>
+    <button class="btn btn-primary btn-long" ui-sref="departments({ idSede: vm.headquarter.idSede })"> Ver Departamentos </button>
     <button class="btn btn-secondary btn-long" ui-sref="headquarters"> Volver </button>
   </div>
 </div>                 

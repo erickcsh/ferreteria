@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Tipos Empleados</h1>
+    <button class="btn btn-primary" ui-sref="employee_typeNew"> Nuevo Tipo de Empleado</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="employee_type in vm.employee_types" ui-sref="employee_type({id: employee_type.idTipoEmpleado})">
+      <div class="col-xs-4">
+        <strong> Nombre: </strong>
+        <p> {{employee_type.nombre}} </p>
+      </div>
+    </div>
+  </div>
+</div>

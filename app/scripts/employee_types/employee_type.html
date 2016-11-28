@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1> {{ vm.employee_type.nombre }} </h1>
+  </div>
+</div>
+<div class="row">      
+  <div class="col-lg-12">
+    <button class="btn btn-primary btn-long" ui-sref="employee_typeEdit({id: vm.employee_type.idTipoEmpleado })"> Editar </button>
+    <button class="btn btn-secondary btn-long" ui-sref="employee_types"> Volver </button>
+    <button class="btn btn-danger btn-long" ng-click="vm.deleteEmployeeType()"> Eliminar </button>
+  </div>
+</div>                 

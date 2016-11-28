@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Modelos de Carros</h1>
+    <button class="btn btn-primary" ui-sref="car_modelNew"> Nueva Modelo</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="car_model in vm.car_models" ui-sref="car_model({id: car_model.idModelo})">
+      <div class="col-xs-4">
+        <strong> Nombre: </strong>
+        <p> {{car_model.nombre}}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Marca: </strong>
+        <p> {{car_model.MarcaCarro}}</p>
+      </div>
+    </div>
+  </div>
+</div>

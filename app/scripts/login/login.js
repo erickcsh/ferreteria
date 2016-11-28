@@ -30,31 +30,22 @@
 
     function login() {
       vm.error = false;
-      if (vm.auth.username === 'admin' && vm.auth.password === 'admin') {
-        authModel.user = {
-          username: vm.auth.username,
-          admin: true
-        }
-        authModel.setCookies();
-        $window.location.href = '/#/home';
-      } else if (vm.auth.username === 'client') {
-        authModel.user = {
-          username: vm.auth.username,
-          admin: false
-        }
-        authModel.setCookies();
-        $window.location.href = '/#/home';
-      } else {
-        vm.formData.error = true;
-      }
-      /*
-      $http.get('/api/headquarter/' + $state.params.id, {})
+      $http.post('/api/login/', vm.auth, {})
         .then(function (res) {
-          vm.product = res.data[0][0];
+          var auth = res.data[0][0];
+          if (auth && auth.nombreUsuario) {
+            authModel.user = {
+              username: auth.nombreUsuario,
+              admin: auth.admin ? 'admin' : ''
+            }
+            authModel.setCookies();
+            $window.location.href = '/#/home';
+          } else {
+            vm.formData.error = true;
+          }
         }, function () {
-          vm.product = {};
+          vm.formData.error = true;
         });
-       */
     }
   }
 

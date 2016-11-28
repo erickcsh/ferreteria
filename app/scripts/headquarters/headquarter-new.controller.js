@@ -12,11 +12,7 @@
     vm.createHeadquarter = createHeadquarter;
 
     function createHeadquarter() {
-      var headquarter = {
-        nombre: vm.headquarter.nombre,
-        point: vm.headquarter.lat + ' ' + vm.headquarter.lon
-      }
-      $http.post('api/headquarters', headquarter, {})
+      $http.post('api/headquarters', vm.headquarter, {})
         .then(function (data) {
           $state.go('headquarters');
         }, function () {

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1> {{ vm.client.nombre }} {{ vm.client.apellidoP }} {{ vm.client.apellidoM }} </h1>
+  </div>
+</div>
+<div class="show-info-container">
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Cédula:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.client.cedula }}</span>
+    </div>
+  </div>
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Correo:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.client.correo }}</span>
+    </div>
+  </div>
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Número:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.client.numero}}</span>
+    </div>
+  </div>
+</div>                 
+<div class="row">      
+  <div class="col-lg-12">
+    <button class="btn btn-primary btn-long" ui-sref="clientEdit({id: vm.client.cedula })"> Editar </button>
+    <button class="btn btn-secondary btn-long" ui-sref="clients"> Volver </button>
+    <button class="btn btn-danger btn-long" ng-click="vm.deleteClient()"> Eliminar </button>
+  </div>
+</div>                 

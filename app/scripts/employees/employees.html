@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Empleados</h1>
+    <button class="btn btn-primary" ui-sref="employeeNew({ idSede: vm.idSede })"> Nuevo Empleado </button>
+    <button class="btn btn-secondary" ui-sref="bestEmployee({ idSede: vm.idSede })"> Mejor Empleado </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="employee in vm.employees" ui-sref="employee({id: employee.cedula})">
+      <div class="col-xs-4">
+        <strong> Nombre: </strong>
+        <p> {{employee.nombre}} {{employee.apellidoP}} {{employee.apellidoM}}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Cedula: </strong>
+        <p> {{employee.cedula}}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Fecha de contratación: </strong>
+        <p> {{employee.fechaContratado | date : 'd/M/yyyy' }}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Tipo: </strong>
+        <p> {{employee.TipoEmpleado}}</p>
+      </div>
+    </div>
+  </div>
+</div>

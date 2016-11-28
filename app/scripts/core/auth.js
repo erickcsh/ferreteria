@@ -6,12 +6,13 @@
     .factory('authModel', authModel);
 
   /* @ngInject */
-  function authModel($cookies) {
+  function authModel($cookies, $window) {
     var model = {
       user: {},
       loadCookies: loadCookies,
       setCookies: setCookies,
-      removeCookies: removeCookies
+      removeCookies: removeCookies,
+      logout: logout
     };
 
     loadCookies();
@@ -25,12 +26,17 @@
 
     function setCookies() {
       $cookies.user = model.user.username;
-      $cookies.user_type = model.user.type;
+      $cookies.user_type = model.user.admin;
     }
 
     function removeCookies() {
       $cookies.user = '';
       $cookies.user_type = '';
+    }
+
+    function logout() {
+      removeCookies();
+      $window.location.href = '/#/login';
     }
   }
 

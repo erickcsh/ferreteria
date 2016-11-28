@@ -14,9 +14,8 @@
     function getHeadquarter() {
       $http.get('/api/headquarter/' + $state.params.id, {})
         .then(function (res) {
-          vm.product = res.data[0][0];
+          vm.headquarter = res.data[0][0];
         }, function () {
-          vm.product = {};
         });
     }
   }

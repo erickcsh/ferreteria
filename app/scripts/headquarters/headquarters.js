@@ -33,6 +33,12 @@
         templateUrl: './scripts/headquarters/headquarter-new.html',
         controller: 'HeadquarterNewController',
         controllerAs: 'vm'
+      })
+      .state('bestHeadquarter', {
+        url: '/best-headquarter',
+        templateUrl: './scripts/headquarters/best-headquarter.html',
+        controller: 'BestHeadquarterController',
+        controllerAs: 'vm'
       });
   }
 

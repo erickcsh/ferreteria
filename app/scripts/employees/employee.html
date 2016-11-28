@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1> {{ vm.employee.nombre }} {{ vm.employee.apellidoP }} {{ vm.employee.apellidoM }} </h1>
+  </div>
+</div>
+<div class="show-info-container">
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Cédula:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.employee.cedula }}</span>
+    </div>
+  </div>
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Sede:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.employee.NombreSede}}</span>
+    </div>
+  </div>
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Fecha Contratación:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.employee.fechaContratado | date: 'd/M/yyyy' }}</span>
+    </div>
+  </div>
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Tipo:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.employee.TipoEmpleado }}</span>
+    </div>
+  </div>
+</div>                 
+<div class="row">      
+  <div class="col-lg-12">
+    <button class="btn btn-primary btn-long" ui-sref="employeeEdit({id: vm.employee.cedula })"> Editar </button>
+    <button class="btn btn-secondary btn-long" ui-sref="employees({ idSede: vm.employee.idSede })"> Volver </button>
+    <button class="btn btn-danger btn-long" ng-click="vm.deleteEmployee()"> Eliminar </button>
+  </div>
+</div>                 

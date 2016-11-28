@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Nuevo Cliente</h1>
+  </div>
+</div>
+<form name="newClientForm" novalidate>
+  <div class="show-info-container">
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Cédula:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="cedula" ng-model="vm.client.cedula" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.cedula.$error"
+        ng-show="newClientForm.cedula.$touched && newUserForm.cedula.$invalid">
+      </div>
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Nombre:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="nombre" ng-model="vm.client.nombre" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.nombre.$error"
+        ng-show="newClientForm.nombre.$touched && newUserForm.nombre.$invalid">
+      </div>
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Primer Apellido:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="apellidoP" ng-model="vm.client.apellidoP" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.apellidoP.$error"
+        ng-show="newClientForm.apellidoP.$touched && newUserForm.apellidoP.$invalid">
+      </div>
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Segundo Apellido:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="apellidoM" ng-model="vm.client.apellidoM" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.apellidoM.$error"
+        ng-show="newClientForm.apellidoM.$touched && newUserForm.apellidoM.$invalid">
+      </div>
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Correo:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="correo" ng-model="vm.client.correo" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.correo.$error"
+        ng-show="newClientForm.correo.$touched && newUserForm.correo.$invalid">
+      </div>
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Número:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="numero" ng-model="vm.client.numero" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.numero.$error"
+        ng-show="newClientForm.numero.$touched && newUserForm.numero.$invalid">
+      </div>
+    </div>
+    <div class="row form-row">      
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Latitud:</label>
+      </div>           
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="lat" ng-model="vm.client.lat" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.lat.$error"
+        ng-show="newClientForm.lat.$touched && newUserForm.lat.$invalid">
+      </div>           
+    </div>             
+    <div class="row form-row">      
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Longitud:</label>
+      </div>           
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="lon" ng-model="vm.client.lon" required/>
+      </div>           
+      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
+        ng-messages="newClientForm.lon.$error"
+        ng-show="newClientForm.lon.$touched && newUserForm.lon.$invalid">
+      </div>           
+    </div>             
+    <div class="row">
+      <div class="col-lg-12">
+        <button ng-disabled="newClientForm.$invalid" class="btn btn-primary btn-long" ng-click="vm.createClient()">Guardar</button>
+        <button class="btn btn-secondary btn-long" ui-sref="clients">Volver</button>
+      </div>
+    </div>
+  </div>
+</form>
+

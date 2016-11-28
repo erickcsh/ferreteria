@@ -12,7 +12,8 @@ module.exports = {
   getHeadquarter: getHeadquarter,
   createHeadquarter: createHeadquarter,
   deleteHeadquarter: deleteHeadquarter,
-  updateHeadquarter: updateHeadquarter
+  updateHeadquarter: updateHeadquarter,
+  getBestHeadquarter: getBestHeadquarter
 };
 
 function getHeadquarters(callback, errorCallback) {
@@ -36,16 +37,13 @@ function getHeadquarter(id, callback, errorCallback) {
 }
 
 function createHeadquarter(Headquarter, callback, errorCallback) {
-  console.log(Headquarter);
-  var a = mysql.query('CALL usp_InsertarSede(?, POINT(?))', [Headquarter.nombre, Headquarter.point], function(err, rows) {
+  mysql.query('CALL usp_InsertarSede(?, POINT(?, ?))', [Headquarter.nombre, Headquarter.lat, Headquarter.lon], function(err, rows) {
     if (err) {
-      console.log(err);
       errorCallback(err);
     } else {
       callback(rows);
     }
   });
-  console.log(a.msql);
 }
 
 function deleteHeadquarter(id, callback, errorCallback) {
@@ -61,6 +59,16 @@ function deleteHeadquarter(id, callback, errorCallback) {
 function updateHeadquarter(Headquarter, callback, errorCallback) {
   mysql.query('CALL usp_ModificarHeadquartero(?, ?, ?, ?, ?, ?)', [Headquarter.idHeadquartero, Headquarter.descripcion,
               Headquarter.utilidad, Headquarter.precio, Headquarter.precioVenta, undefined], function(err, rows, a) {
+    if (err) {
+      errorCallback(err);
+    } else {
+      callback(rows);
+    }
+  });
+}
+
+function getBestHeadquarter(callback, errorCallback) {
+  mysql.query('CALL usp_SedeMasVentas()', function(err, rows) {
     if (err) {
       errorCallback(err);
     } else {

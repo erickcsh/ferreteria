@@ -7,7 +7,7 @@
 
   /* @ngInject */
   function authAdmin($window, authModel) {
-    if (!authModel.user || !authModel.user.admin) {
+    if (!authModel.user || !authModel.user.type) {
       $window.location.href = '/#/home';
     }
   }
