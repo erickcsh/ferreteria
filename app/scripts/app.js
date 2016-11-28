@@ -8,11 +8,15 @@
       'ferreteriaApp.login',
       'ferreteriaApp.products',
       'ferreteriaApp.headquarters',
+      'ferreteriaApp.brands',
+      'ferreteriaApp.cars',
       'ferreteriaApp.car_brands',
       'ferreteriaApp.car_models',
       'ferreteriaApp.employees',
       'ferreteriaApp.backorders',
       'ferreteriaApp.departments',
+      'ferreteriaApp.halls',
+      'ferreteriaApp.shelfs',
       'ferreteriaApp.employee_types',
       'ferreteriaApp.clients'
     ]).config(configStates)

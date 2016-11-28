@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Nuevo Pasillo</h1>
+  </div>
+</div>
+<form name="newHallForm" novalidate>
+  <div class="show-info-container">
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Nombre:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="nombre" ng-model="vm.hall.nombre" required/>
+      </div>           
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Número:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="numero" ng-model="vm.hall.numero" required/>
+      </div>           
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button ng-disabled="newHallForm.$invalid" class="btn btn-primary btn-long" ng-click="vm.createHall()">Guardar</button>
+        <button class="btn btn-secondary btn-long" ui-sref="halls({ idDepartamento: vm.idDepartamento })">Volver</button>
+      </div>
+    </div>
+  </div>
+</form>
+

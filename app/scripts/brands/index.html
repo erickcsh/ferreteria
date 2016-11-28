@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Marcas</h1>
+    <button class="btn btn-primary" ui-sref="brandNew"> Nueva Marca</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="brand in vm.brands" ui-sref="brand({id: brand.idMarca})">
+      <div class="col-xs-4">
+        <strong> Nombre: </strong>
+        <p> {{brand.nombre}}</p>
+      </div>
+    </div>
+  </div>
+</div>

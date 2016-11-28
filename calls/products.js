@@ -36,8 +36,8 @@ function getProduct(id, callback, errorCallback) {
 }
 
 function createProduct(product, callback, errorCallback) {
-  mysql.query('CALL usp_InsertarProducto(?, ?, ?, ?, ?, ?)', [product.nombre, product.descripcion,
-              product.utilidad, product.precio, product.precioVenta, product.NombreMarca], function(err, rows, a) {
+  mysql.query('CALL usp_InsertarProducto(?, ?, ?, ?, ?, ?, ?, ?)', [product.codigo, product.nombre, product.descripcion,
+              product.utilidad, product.aspectosTecnicos, product.precioVenta, product.precioVenta, product.NombreMarca], function(err, rows, a) {
     if (err) {
       errorCallback(err);
     } else {
@@ -57,8 +57,8 @@ function deleteProduct(id, callback, errorCallback) {
 }
 
 function updateProduct(product, callback, errorCallback) {
-  mysql.query('CALL usp_ModificarProducto(?, ?, ?, ?, ?, ?)', [product.idProducto, product.descripcion,
-              product.utilidad, product.precio, product.precioVenta, undefined], function(err, rows, a) {
+  mysql.query('CALL usp_ModificarProducto(?, ?, ?, ?, ?, ?, ?)', [product.idProducto, product.descripcion,
+              product.utilidad, product.aspectosTecnicos, product.precioVenta, product.precioVenta, product.idMarca], function(err, rows, a) {
     if (err) {
       errorCallback(err);
     } else {

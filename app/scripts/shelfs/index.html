@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Estantes</h1>
+    <button class="btn btn-primary" ui-sref="shelfNew({ idPasillo: vm.idPasillo })"> Nuevo Estante</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="shelf in vm.shelfs" ui-sref="shelf({id: shelf.idEstante})">
+      <div class="col-xs-4">
+        <strong> Id: </strong>
+        <p> {{shelf.idEstante}}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Cantidad: </strong>
+        <p> {{shelf.cantidadEstantes}}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Pisos: </strong>
+        <p> {{shelf.pisos}}</p>
+      </div>
+    </div>
+  </div>
+</div>

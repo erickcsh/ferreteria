@@ -16,7 +16,7 @@ module.exports = {
 };
 
 function getBrands(callback, errorCallback) {
-  mysql.query('CALL usp_ObtenerSedes()', function(err, rows) {
+  mysql.query('CALL usp_ObtenerMarcas()', function(err, rows) {
     if (err) {
       errorCallback(err);
     } else {
@@ -26,7 +26,7 @@ function getBrands(callback, errorCallback) {
 }
 
 function getBrand(id, callback, errorCallback) {
-  mysql.query('CALL usp_ObtenerSede(?)', [id], function(err, rows) {
+  mysql.query('CALL usp_ObtenerMarca(?)', [id], function(err, rows) {
     if (err) {
       errorCallback(err);
     } else {
@@ -36,7 +36,7 @@ function getBrand(id, callback, errorCallback) {
 }
 
 function createBrand(Brand, callback, errorCallback) {
-  mysql.query('CALL usp_InsertarSede(?, POINT(?, ?))', [Brand.nombre, Brand.lat, Brand.lon], function(err, rows) {
+  mysql.query('CALL usp_InsertarMarcas(?)', [Brand.nombre], function(err, rows) {
     if (err) {
       errorCallback(err);
     } else {
@@ -46,7 +46,7 @@ function createBrand(Brand, callback, errorCallback) {
 }
 
 function deleteBrand(id, callback, errorCallback) {
-  mysql.query('CALL usp_EliminarBrando(?)', [id], function(err, rows, a) {
+  mysql.query('CALL usp_EliminarMarca(?)', [id], function(err, rows, a) {
     if (err) {
       errorCallback(err);
     } else {
@@ -56,8 +56,7 @@ function deleteBrand(id, callback, errorCallback) {
 }
 
 function updateBrand(Brand, callback, errorCallback) {
-  mysql.query('CALL usp_ModificarBrando(?, ?, ?, ?, ?, ?)', [Brand.idBrando, Brand.descripcion,
-              Brand.utilidad, Brand.precio, Brand.precioVenta, undefined], function(err, rows, a) {
+  mysql.query('CALL usp_ModificarMarca(?, ?)', [Brand.idMarca, Brand.nombre], function(err, rows, a) {
     if (err) {
       errorCallback(err);
     } else {
@@ -66,12 +65,3 @@ function updateBrand(Brand, callback, errorCallback) {
   });
 }
 
-function getBestBrand(callback, errorCallback) {
-  mysql.query('CALL usp_SedeMasVentas()', function(err, rows) {
-    if (err) {
-      errorCallback(err);
-    } else {
-      callback(rows);
-    }
-  });
-}

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Nuevo Vehiculo</h1>
+  </div>
+</div>
+<form name="newCarForm" novalidate>
+  <div class="show-info-container">
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Placa:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="placa" ng-model="vm.car.placa" required/>
+      </div>           
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Año:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <input type="text" name="anno" ng-model="vm.car.anno" required/>
+      </div>           
+    </div>
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Modelo:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <select ng-model="vm.car.IdModelo" name="IdModelo">
+          <option ng-repeat="type in vm.car_models" value="{{type.idModelo}}">{{type.nombre}}</option>
+        </select>
+      </div>           
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button ng-disabled="newCarForm.$invalid" class="btn btn-primary btn-long" ng-click="vm.createCar()">Guardar</button>
+        <button class="btn btn-secondary btn-long" ui-sref="cars">Volver</button>
+      </div>
+    </div>
+  </div>
+</form>
+

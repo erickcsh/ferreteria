@@ -22,13 +22,23 @@
         <label>Código:</label>
       </div>           
       <div class="col-md-10 col-sm-9">
-        <input type="text" name="precio" ng-model="vm.product.precio" required/>
+        <input type="text" name="codigo" ng-model="vm.product.codigo" required/>
       </div>           
       <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
         ng-messages="newProductForm.precio.$error"
         ng-show="newProductForm.precio.$touched && newUserForm.precio.$invalid">
       </div>           
     </div>             
+    <div class="row form-row">      
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Marca:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <select ng-model="vm.product.idMarca" name="idMarca">
+          <option ng-repeat="type in vm.brands" value="{{type.idMarca}}" ng-selected="type.nombre === vm.product.NombreMarca">{{type.nombre}}</option>
+        </select>
+      </div>
+    </div>
     <div class="row form-row">      
       <div class="col-md-2 col-sm-3 label-container">
         <label>Precio:</label>
@@ -51,6 +61,14 @@
       <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
         ng-messages="newProductForm.utilidad.$error"
         ng-show="newProductForm.utilidad.$touched && newUserForm.utilidad.$invalid">
+      </div>
+    </div>
+    <div class="row form-row">      
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Aspectos Técnicos:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <textarea name="aspectosTecnicos" ng-model="vm.product.aspectosTecnicos" required></textarea>
       </div>
     </div>
     <div class="row">

@@ -36,12 +36,7 @@
         <label>Código:</label>
       </div>           
       <div class="col-md-10 col-sm-9">
-        <input type="text" name="precio" ng-model="vm.product.precio" required/>
-      </div>           
-      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
-        ng-messages="newProductForm.precio.$error"
-        ng-show="newProductForm.precio.$touched && newUserForm.precio.$invalid">
-        <div ng-messages-include="app/components/users/messages.html"></div>
+        <input type="text" name="codigo" ng-model="vm.product.codigo" required/>
       </div>           
     </div>             
     <div class="row form-row">      
@@ -62,12 +57,9 @@
         <label>Marca:</label>
       </div>
       <div class="col-md-10 col-sm-9">
-        <input type="text" name="NombreMarca" ng-model="vm.product.NombreMarca" required/>
-      </div>
-      <div class="help-block col-md-10 col-sm-9 col-md-offset-2 col-sm-offset-3"
-        ng-messages="newProductForm.NombreMarca.$error"
-        ng-show="newProductForm.NombreMarca.$touched && newUserForm.NombreMarca.$invalid">
-        <div ng-messages-include="app/components/users/messages.html"></div>
+        <select ng-model="vm.product.NombreMarca" name="NombreMarca">
+          <option ng-repeat="type in vm.brands" value="{{type.nombre}}">{{type.nombre}}</option>
+        </select>
       </div>
     </div>
     <div class="row form-row">      
@@ -81,6 +73,14 @@
         ng-messages="newProductForm.utilidad.$error"
         ng-show="newProductForm.utilidad.$touched && newUserForm.utilidad.$invalid">
         <div ng-messages-include="app/components/users/messages.html"></div>
+      </div>
+    </div>
+    <div class="row form-row">      
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Aspectos Técnicos:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <textarea name="aspectosTecnicos" ng-model="vm.product.aspectosTecnicos" required></textarea>
       </div>
     </div>
     <div class="row">

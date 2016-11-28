@@ -6,6 +6,7 @@ var employees = require('./calls/employees');
 var car_brands= require('./calls/car_brands');
 var backorders = require('./calls/backorders');
 var departments = require('./calls/departments');
+var brands = require('./calls/brands');
 
 var app = express();
 app.use(express.logger());
@@ -399,6 +400,171 @@ app.delete('/api/department/:id', function(request, response) {
 
 app.put('/api/department/:id', function(request, response) {
   departments.updateDepartment(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+//halls
+app.get('/api/department/:idDepartamento/halls', function(request, response) {
+  departments.getHalls(request.params.idDepartamento, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/halls', function(request, response) {
+  departments.createHall(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/hall/:id', function(request, response) {
+  departments.getHall(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.delete('/api/hall/:id', function(request, response) {
+  departments.deleteHall(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.put('/api/hall/:id', function(request, response) {
+  departments.updateHall(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+//shelfs
+app.get('/api/hall/:idPasillo/shelfs', function(request, response) {
+  departments.getShelfs(request.params.idPasillo, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/shelfs', function(request, response) {
+  departments.createShelf(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    console.log(err);
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/shelf/:id', function(request, response) {
+  departments.getShelf(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.delete('/api/shelf/:id', function(request, response) {
+  departments.deleteShelf(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.put('/api/shelf/:id', function(request, response) {
+  departments.updateShelf(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+//brands
+app.get('/api/brands', function(request, response) {
+  brands.getBrands(function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/brands', function(request, response) {
+  brands.createBrand(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/brand/:id', function(request, response) {
+  brands.getBrand(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.delete('/api/brand/:id', function(request, response) {
+  brands.deleteBrand(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.put('/api/brand/:id', function(request, response) {
+  brands.updateBrand(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+//brands
+app.get('/api/cars', function(request, response) {
+  car_brands.getCars(function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/cars', function(request, response) {
+  car_brands.createCar(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/car/:id', function(request, response) {
+  car_brands.getCar(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.delete('/api/car/:id', function(request, response) {
+  car_brands.deleteCar(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.put('/api/car/:id', function(request, response) {
+  car_brands.updateCar(request.body, function (rows) {
     response.json(rows)
   }, function (err) {
     response.status(500).send({ error: err })

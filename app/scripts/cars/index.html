@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Flotilla</h1>
+    <button class="btn btn-primary" ui-sref="carNew"> Nuevo Vehiculo</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="car in vm.cars" ui-sref="car({id: car.Placa})">
+      <div class="col-xs-3">
+        <strong> Placa: </strong>
+        <p> {{car.Placa}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Marca: </strong>
+        <p> {{car.NombreMarca}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Modelo: </strong>
+        <p> {{car.NombreModelo}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Año: </strong>
+        <p> {{car['Año']}}</p>
+      </div>
+    </div>
+  </div>
+</div>

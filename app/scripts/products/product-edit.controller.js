@@ -10,7 +10,9 @@
     var vm = this;
     vm.product = {};
     vm.editProduct = editProduct;
+    vm.brands = [];
     getProduct();
+    loadInfo();
 
     function editProduct() {
       $http.put('/api/product/' + $state.params.id, vm.product, {})
@@ -26,6 +28,15 @@
           vm.product = res.data[0][0];
         }, function () {
           vm.product = {};
+        });
+    }
+
+    function loadInfo() {
+      $http.get('api/brands', {})
+        .then(function (data) {
+          vm.brands = data.data[0];
+        }, function () {
+          vm.brands = [];
         });
     }
   }
