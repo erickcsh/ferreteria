@@ -411,6 +411,14 @@ app.put('/api/department/:id', function(request, response) {
   });
 });
 
+app.put('/api/department/:id/expert', function(request, response) {
+  departments.addDepartmentExpert(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
 //halls
 app.get('/api/department/:idDepartamento/halls', function(request, response) {
   departments.getHalls(request.params.idDepartamento, function (rows) {
@@ -655,7 +663,7 @@ app.get('/api/payments', function(request, response) {
 });
 
 app.post('/api/add_bill', function(request, response) {
-  products.getPayments(function (rows) {
+  products.createBill(request.body, function (rows) {
     response.json(rows)
   }, function (err) {
     response.status(500).send({ error: err })

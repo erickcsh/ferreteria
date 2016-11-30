@@ -55,7 +55,7 @@
         shoppingCart.cleanCart();
         getBills(function (bills) {
           var myArray = bills.filter(function( el ) {
-            return !vm.bills.some(function (e) { return e.idPasillo ===  el.idPasillo } );
+            return !vm.bills.some(function (e) { return e.idPedido ===  el.idPedido } );
           });
           var idPedido = myArray[0].idPedido;
           $state.go('pay', { id: idPedido });

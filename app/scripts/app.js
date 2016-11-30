@@ -5,6 +5,8 @@
     .module('ferreteriaApp', [
       'ui.router',
       'ferreteriaApp.authCore',
+      'ferreteriaApp.shoppingCore',
+      'ferreteriaApp.clientSection',
       'ferreteriaApp.login',
       'ferreteriaApp.products',
       'ferreteriaApp.hq_products',
@@ -38,15 +40,18 @@
   }
 
   /* @ngInject */
-  function HomeController($state, authModel) {
+  function HomeController($state, authModel, $window) {
     if (!authModel.user || !authModel.user.username) {
       $state.go('login');
+    } else if (authModel.user.admin !== 'admin') {
+      $window.location.href = '/#/user/home';
     }
   }
 
   /* @ngInject */
-  function headerBar($rootScope, authModel) {
+  function headerBar($rootScope, authModel, shoppingCart) {
     function logout() {
+      shoppingCart.cleanCart();
       authModel.logout();
     }
 

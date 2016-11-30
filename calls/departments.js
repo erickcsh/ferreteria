@@ -13,6 +13,7 @@ module.exports = {
   createDepartment: createDepartment,
   deleteDepartment: deleteDepartment,
   updateDepartment: updateDepartment,
+  addDepartmentExpert: addDepartmentExpert,
   getHalls: getHalls,
   getHeadquarterHalls: getHeadquarterHalls,
   getHall: getHall,
@@ -70,6 +71,16 @@ function deleteDepartment(id, callback, errorCallback) {
 
 function updateDepartment(department, callback, errorCallback) {
   mysql.query('CALL usp_ModificarDepartamento(?, ?, ?, ?)', [department.idDepartamento, department.idSede, department.Departamento, undefined], function(err, rows, a) {
+    if (err) {
+      errorCallback(err);
+    } else {
+      callback(rows);
+    }
+  });
+}
+
+function addDepartmentExpert(department, callback, errorCallback) {
+  mysql.query('CALL usp_ModificarDepartamento(?, ?, ?, ?)', [department.idDepartamento, undefined, undefined, department.cedEmpleado], function(err, rows, a) {
     if (err) {
       errorCallback(err);
     } else {

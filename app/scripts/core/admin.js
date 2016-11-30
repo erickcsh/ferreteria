@@ -7,7 +7,8 @@
 
   /* @ngInject */
   function authAdmin($window, authModel) {
-    if (!authModel.user || !authModel.user.type) {
+    authModel.loadCookies();
+    if (!authModel.user || authModel.user.admin !== 'admin') {
       $window.location.href = '/#/home';
     }
   }

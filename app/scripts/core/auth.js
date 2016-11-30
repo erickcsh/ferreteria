@@ -21,7 +21,7 @@
 
     function loadCookies() {
       model.user.username = $cookies.user;
-      model.user.type = $cookies.user_type;
+      model.user.admin = $cookies.user_type;
       model.user.id = $cookies.user_id;
     }
 

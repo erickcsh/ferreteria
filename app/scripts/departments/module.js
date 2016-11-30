@@ -22,6 +22,12 @@
         controller: 'DepartmentController',
         controllerAs: 'vm'
       })
+      .state('departmentExpert', {
+        url: '/department/:id/expert',
+        templateUrl: './scripts/departments/expert.html',
+        controller: 'DepartmentExpertEditController',
+        controllerAs: 'vm'
+      })
       .state('departmentEdit', {
         url: '/department/:id/edit',
         templateUrl: './scripts/departments/edit.html',

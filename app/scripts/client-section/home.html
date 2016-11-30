@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Productos</h1>
+    <button class="btn btn-primary" ui-sref="user-home"> Ver Carrito </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="product in vm.products">
+      <div class="col-xs-3">
+        <strong> Nombre: </strong>
+        <p> {{product.nombre}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Código: </strong>
+        <p> {{product.codigoProducto}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Precio: </strong>
+        <p> {{product.precioVenta}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Marca: </strong>
+        <p> {{product.NombreMarca}}</p>
+      </div>
+      <button class="btn btn-primary" ng-click="vm.addToCart(product)"> Agregar a Carrito </button>
+    </div>
+    </div>
+  </div>
+</div>

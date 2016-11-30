@@ -2,53 +2,42 @@
   'use strict';
 
   angular
-    .module('ferreteriaApp')
+    .module('ferreteriaApp.clientSection', ['ferreteriaApp.shoppingCore'])
     .config(configStates)
-    .controller('HomeController', HomeController)
-    .directive('headerBar', headerBar);
+    .controller('ClientHomeController', ClientHomeController);
 
   /* @ngInject */
   function configStates($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
-      .state('home', {
-        url: '/home',
-        templateUrl: './home.html',
-        controller: 'HomeController'
+      .state('user-home', {
+        url: '/user/home',
+        templateUrl: './scripts/client-section/home.html',
+        controller: 'ClientHomeController',
+        controllerAs: 'vm'
       });
   }
 
   /* @ngInject */
-  function HomeController($state, authModel) {
-    if (!authModel.user || !authModel.user.username) {
-      $state.go('login');
-    }
-  }
+  function ClientHomeController($state, $http, shoppingCart) {
+    var vm = this;
+    vm.products = [];
+    vm.addToCart = addToCart;
+    getProducts();
 
-  /* @ngInject */
-  function headerBar($rootScope, authModel) {
-    function logout() {
-      authModel.logout();
-    }
-
-    function link(scope) {
-      scope.user = authModel.user;
-
-      $rootScope.$watch(function () {
-        return authModel.user;
+    function getProducts() {
+      $http.get('/api/products', {}).then(function (json) {
+        vm.products = json.data[0];
       }, function () {
-        scope.user = authModel.user;
+        vm.products = [];
       });
-
-      scope.logout = logout;
     }
 
-    return {
-      restrict: 'E',
-      templateUrl: './header-bar.html',
-      link: link
-    };
+    function addToCart(product) {
+      shoppingCart.addProduct(product);
+    }
   }
+
 
 })();

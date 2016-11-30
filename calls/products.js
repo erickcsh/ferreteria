@@ -20,6 +20,7 @@ module.exports = {
   getBills: getBills,
   getBill: getBill,
   getBillProducts: getBillProducts,
+  createBill: createBill,
   search: search
 };
 
@@ -130,6 +131,17 @@ function getBill(id, callback, errorCallback) {
 function getBillProducts(id, callback, errorCallback) {
   mysql.query('CALL usp_ObtenerProductosXPedido(?)', [id], function(err, rows, a) {
     if (err) {
+      errorCallback(err);
+    } else {
+      callback(rows);
+    }
+  });
+}
+
+function createBill(data, callback, errorCallback) {
+  mysql.query('CALL usp_FacturarPedido(?, ?, ?, ?)', [data.cedCliente, data.idPedido, data.detalle, data.tarjeta], function(err, rows, a) {
+    if (err) {
+      console.log(err);
       errorCallback(err);
     } else {
       callback(rows);
