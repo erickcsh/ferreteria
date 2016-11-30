@@ -14,7 +14,9 @@ module.exports = {
   deleteDepartment: deleteDepartment,
   updateDepartment: updateDepartment,
   getHalls: getHalls,
+  getHeadquarterHalls: getHeadquarterHalls,
   getHall: getHall,
+  getHallOrder: getHallOrder,
   createHall: createHall,
   deleteHall: deleteHall,
   updateHall: updateHall,
@@ -86,8 +88,28 @@ function getHalls(idDepartamento, callback, errorCallback) {
   });
 }
 
+function getHeadquarterHalls(idSede, callback, errorCallback) {
+  mysql.query('CALL usp_ObtenerPasilloXSede(?)', [idSede], function(err, rows) {
+    if (err) {
+      errorCallback(err);
+    } else {
+      callback(rows);
+    }
+  });
+}
+
 function getHall(id, callback, errorCallback) {
   mysql.query('CALL usp_ObtenerPasillo(?)', [id], function(err, rows) {
+    if (err) {
+      errorCallback(err);
+    } else {
+      callback(rows);
+    }
+  });
+}
+
+function getHallOrder(data, callback, errorCallback) {
+  mysql.query('CALL usp_AcomodarProductosXSedeXDepartamentoXPasillo(?, ?, ?)', [data.idSede, data.idDepartamento, data.idPasillo], function(err, rows) {
     if (err) {
       errorCallback(err);
     } else {

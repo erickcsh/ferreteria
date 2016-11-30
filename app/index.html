@@ -38,6 +38,7 @@
       g.src='//www.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -62,11 +63,15 @@
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="lib/angular-simple-logger.js"></script>
+        <script src="lib/lodash.js"></script>
+        <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/core/auth.js"></script>
         <script src="scripts/core/admin.js"></script>
+        <script src="scripts/core/shopping_cart.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/login/login.js"></script>
         <!-- products -->
@@ -131,6 +136,7 @@
         <script src="scripts/halls/show.controller.js"></script>
         <script src="scripts/halls/edit.controller.js"></script>
         <script src="scripts/halls/new.controller.js"></script>
+        <script src="scripts/halls/order.controller.js"></script>
         <!-- shelfs -->
         <script src="scripts/shelfs/module.js"></script>
         <script src="scripts/shelfs/index.controller.js"></script>
@@ -149,6 +155,16 @@
         <script src="scripts/cars/show.controller.js"></script>
         <script src="scripts/cars/edit.controller.js"></script>
         <script src="scripts/cars/new.controller.js"></script>
+        <!-- hq_products -->
+        <script src="scripts/hq_products/module.js"></script>
+        <script src="scripts/hq_products/index.controller.js"></script>
+        <script src="scripts/hq_products/new.controller.js"></script>
+        <script src="scripts/hq_products/bill.controller.js"></script>
+        <script src="scripts/hq_products/search.controller.js"></script>
+        <!-- routes -->
+        <script src="scripts/routes/module.js"></script>
+        <script src="scripts/routes/index.controller.js"></script>
+        <script src="scripts/routes/show.controller.js"></script>
         <!-- endbuild -->
 </body>
 </html>

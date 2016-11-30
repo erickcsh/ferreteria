@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1> Ruta </h1>
+  </div>
+</div>
+<div class="show-info-container">
+  <div class="row info-detail">   
+    <div class="col-lg-2 col-md-4 col-sm-5">
+      <label>Ganancia:</label>
+    </div>             
+    <div class="col-lg-10 col-md-8 col-sm-7">
+      <span>{{ vm.route.Ganancia }}</span>
+    </div>
+  </div>
+  <div class="row info-detail">   
+    <div class="col-lg-12">
+      <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
+        <ui-gmap-polyline path="vm.positions"
+        stroke='vm.conf.stroke'
+        visible='true'
+        fit='false'
+        >
+        </ui-gmap-polyline>
+      </ui-gmap-google-map>
+    </div>
+  </div>
+</div>
+<div class="row">      
+  <div class="col-lg-12">
+    <button class="btn btn-secondary btn-long" ui-sref="routes"> Volver </button>
+  </div>
+</div>                 

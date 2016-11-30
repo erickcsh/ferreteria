@@ -36,6 +36,7 @@
           if (auth && auth.nombreUsuario) {
             authModel.user = {
               username: auth.nombreUsuario,
+              id: auth.idCliente,
               admin: auth.admin ? 'admin' : ''
             }
             authModel.setCookies();

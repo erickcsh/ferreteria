@@ -22,16 +22,19 @@
     function loadCookies() {
       model.user.username = $cookies.user;
       model.user.type = $cookies.user_type;
+      model.user.id = $cookies.user_id;
     }
 
     function setCookies() {
       $cookies.user = model.user.username;
       $cookies.user_type = model.user.admin;
+      $cookies.user_id = model.user.id;
     }
 
     function removeCookies() {
       $cookies.user = '';
       $cookies.user_type = '';
+      $cookies.user_id = '';
     }
 
     function logout() {

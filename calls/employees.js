@@ -79,17 +79,13 @@ function updateEmployee(employee, callback, errorCallback) {
     }
   });
 }
-function getBestEmployee(idSede, callback, errorCallback) {
-  getEmployee(idSede, function (rows) {
-    mysql.query('CALL usp_EmpleadoMasVentasXSede(?)', [rows[0][0].nombre], function(err, rows, a) {
-      if (err) {
-        errorCallback(err);
-      } else {
-        callback(rows);
-      }
-    });
-  }, function (err) {
-    errorCallback(err);
+function getBestEmployee(nombreSede, callback, errorCallback) {
+  mysql.query('CALL usp_EmpleadoMasVentasXSede(?)', [nombreSede], function(err, rows, a) {
+    if (err) {
+      errorCallback(err);
+    } else {
+      callback(rows);
+    }
   });
 }
 

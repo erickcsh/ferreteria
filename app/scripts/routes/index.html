@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h1>Rutas</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="route in vm.routes" ui-sref="route({id: route.idRuta})">
+      <div class="col-xs-4">
+        <strong> Fecha: </strong>
+        <p> {{route.fecha | date : 'd/M/yyyy'}}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Cliente: </strong>
+        <p> {{route.Clientes}}</p>
+      </div>
+      <div class="col-xs-4">
+        <strong> Cédula: </strong>
+        <p> {{route.cedula}}</p>
+      </div>
+    </div>
+  </div>
+</div>

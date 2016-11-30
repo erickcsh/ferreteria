@@ -2,21 +2,32 @@
   'use strict';
 
   angular
-    .module('ferreteriaApp.car_brands')
-    .controller('CarBrandsController', CarBrandsController);
+    .module('ferreteriaApp.hq_products')
+    .controller('HQProductsController', HQProductsController);
 
   /* @ngInject */
-  function CarBrandsController($http) {
+  function HQProductsController($http, $state, shoppingCart) {
     var vm = this;
-    vm.car_brands = [];
-    getCarBrands();
+    vm.hq_products = [];
+    vm.idSede = $state.params.idSede;
+    vm.addToCart = addToCart;
+    getHQProducts();
 
-    function getCarBrands() {
-      $http.get('/api/car_brands', {}).then(function (json) {
-        vm.car_brands = json.data[0];
+    function getHQProducts() {
+      $http.get('/api/headquarter/' + vm.idSede + '/hq_products', {}).then(function (json) {
+        vm.hq_products = json.data[0];
+        vm.hq_products = vm.hq_products.map(function (prod) {
+          prod.cantidadDisponible = prod.Cantidad;
+          return prod;
+        });
       }, function () {
-        vm.car_brands = [];
+        vm.hq_products = [];
       });
+    }
+
+    function addToCart(product) {
+      shoppingCart.addProduct(product);
+      product.cantidadDisponible--;
     }
   }
 

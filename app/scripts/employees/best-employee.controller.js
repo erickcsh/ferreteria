@@ -14,7 +14,7 @@
 
     function getEmployee() {
       $http.get('/api/headquarter/' + vm.idSede + '/best-employee', {}).then(function (json) {
-        vm.employee = json.data[0];
+        vm.employee = json.data[0][0];
       }, function () {
         vm.employee = {};
       });

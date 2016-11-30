@@ -2,19 +2,36 @@
   'use strict';
 
   angular
-    .module('ferreteriaApp.car_brands')
-    .controller('CarBrandNewController', CarBrandNewController);
+    .module('ferreteriaApp.hq_products')
+    .controller('HQProductNewController', HQProductNewController);
 
   /* @ngInject */
-  function CarBrandNewController($state, $http) {
+  function HQProductNewController($state, $http) {
     var vm = this;
-    vm.car_brand = {};
-    vm.createCarBrand = createCarBrand;
+    vm.hq_product = {};
+    vm.idSede = $state.params.idSede;
+    vm.halls = [];
+    vm.products = [];
+    vm.createHQProduct = createHQProduct;
+    loadInfo();
 
-    function createCarBrand() {
-      $http.post('api/car_brands', vm.car_brand, {})
+    function createHQProduct() {
+      $http.post('api/hq_products', vm.hq_product, {})
         .then(function (data) {
-          $state.go('car_brands');
+          $state.go('hq_products', ({ idSede: vm.idSede }));
+        }, function () {
+        });
+    }
+
+    function loadInfo() {
+      $http.get('api/headquarter/' + vm.idSede + '/halls', {})
+        .then(function (data) {
+          vm.halls = data.data[0];
+        }, function () {
+        });
+      $http.get('api/products', {})
+        .then(function (data) {
+          vm.products = data.data[0];
         }, function () {
         });
     }

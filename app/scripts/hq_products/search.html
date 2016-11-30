@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Buscar Producto En Ferreterías Cercanas</h1>
+  </div>
+</div>
+<form name="newSearchForm" novalidate>
+  <div class="show-info-container">
+    <div class="row form-row">
+      <div class="col-md-2 col-sm-3 label-container">
+        <label>Producto:</label>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <select ng-model="vm.product.id" name="idProducto">
+          <option ng-repeat="type in vm.products" value="{{type.idProducto}}">{{type.nombre}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button ng-disabled="newSearchForm.$invalid" class="btn btn-primary btn-long" ng-click="vm.search()">Buscar</button>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="row" ng-show="vm.results.length > 0">
+  <h5> Resultado </h5>
+  <div class="col-xs-12 list-container">
+    <div class="col-xs-12 list-element" ng-repeat="product in vm.results">
+      <div class="col-xs-3">
+        <strong> Nombre: </strong>
+        <p> {{product.nombre}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Código: </strong>
+        <p> {{product.codigoProducto}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Sede: </strong>
+        <p> {{product.Sede}}</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

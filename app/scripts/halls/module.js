@@ -22,6 +22,12 @@
         controller: 'HallController',
         controllerAs: 'vm'
       })
+      .state('hallOrder', {
+        url: '/hall/:id/order',
+        templateUrl: './scripts/halls/order.html',
+        controller: 'HallOrderController',
+        controllerAs: 'vm'
+      })
       .state('hallEdit', {
         url: '/hall/:id/edit',
         templateUrl: './scripts/halls/edit.html',

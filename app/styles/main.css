@@ -72,3 +72,9 @@ body {
 .float-right {
   float: right;
 }
+
+.angular-google-map-container {
+  height: 500px;
+  width: 1000px;
+}
+

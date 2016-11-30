@@ -1,16 +1,36 @@
 <div class="row">
   <div class="col-lg-6">
-    <h1>Marcas de Carros</h1>
-    <button class="btn btn-primary" ui-sref="car_brandNew"> Nueva Marca de Carros</button>
+    <h1>Productos</h1>
+    <button class="btn btn-primary" ui-sref="hq_productNew({ idSede: vm.idSede })"> Asociar Producto </button>
+    <button class="btn btn-primary" ui-sref="bill({ idSede: vm.idSede })"> Ver Carrito </button>
+    <button class="btn btn-primary" ui-sref="search({ idSede: vm.idSede })"> Buscar en Ferreterías Cercanas</button>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12 list-container">
-    <div class="col-xs-12 list-element" ng-repeat="car_brand in vm.car_brands" ui-sref="car_brand({id: car_brand.idMarcaCarro})">
-      <div class="col-xs-4">
+    <div class="col-xs-12 list-element" ng-repeat="product in vm.hq_products" ng-show="product.cantidadDisponible > 0">
+      <div class="col-xs-3">
         <strong> Nombre: </strong>
-        <p> {{car_brand.nombre}}</p>
+        <p> {{product.Producto}}</p>
       </div>
+      <div class="col-xs-3">
+        <strong> Cantidad: </strong>
+        <p> {{product.cantidadDisponible}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Precio: </strong>
+        <p> {{product.precioVenta}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Departamento: </strong>
+        <p> {{product.Departamento}}</p>
+      </div>
+      <div class="col-xs-3">
+        <strong> Pasillo: </strong>
+        <p> {{product.Pasillo}} {{product.NumeroPasillo}}</p>
+      </div>
+      <button class="btn btn-primary" ng-click="vm.addToCart(product)"> Agregar a Carrito </button>
+    </div>
     </div>
   </div>
 </div>

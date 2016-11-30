@@ -6,6 +6,7 @@ var employees = require('./calls/employees');
 var car_brands= require('./calls/car_brands');
 var backorders = require('./calls/backorders');
 var departments = require('./calls/departments');
+var routes = require('./calls/routes');
 var brands = require('./calls/brands');
 
 var app = express();
@@ -21,6 +22,7 @@ app.configure(function(){
   app.use(express.static(__dirname + '/app'));
   app.use('/node_modules', express.static(__dirname + '/node_modules'));
   app.use('/bower_components', express.static(__dirname + '/bower_components'));
+  app.use('/lib', express.static(__dirname + '/lib'));
   app.use(app.router);
   app.engine('html', require('ejs').renderFile);
 });
@@ -194,10 +196,13 @@ app.put('/api/employee/:id', function(request, response) {
 });
 
 app.get('/api/headquarter/:idSede/best-employee', function(request, response) {
-  employees.getEmployees(request.params.idSede, function (rows) {
-    response.json(rows)
+  headquarters.getHeadquarter(request.params.idSede, function (rows) {
+    employees.getBestEmployee(rows[0][0].nombre, function (rows) {
+      response.json(rows)
+    }, function (err) {
+      response.status(500).send({ error: err })
+    });
   }, function (err) {
-    response.status(500).send({ error: err })
   });
 });
 
@@ -415,6 +420,14 @@ app.get('/api/department/:idDepartamento/halls', function(request, response) {
   });
 });
 
+app.get('/api/headquarter/:idSede/halls', function(request, response) {
+  departments.getHeadquarterHalls(request.params.idSede, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
 app.post('/api/halls', function(request, response) {
   departments.createHall(request.body, function (rows) {
     response.json(rows)
@@ -425,6 +438,19 @@ app.post('/api/halls', function(request, response) {
 
 app.get('/api/hall/:id', function(request, response) {
   departments.getHall(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/hall/:id/order/:idSede/:idDepartamento', function(request, response) {
+  var data = {
+    idSede: request.params.idSede,
+    idDepartamento: request.params.idDepartamento,
+    idPasillo: request.params.id
+  }
+  departments.getHallOrder(data, function (rows) {
     response.json(rows)
   }, function (err) {
     response.status(500).send({ error: err })
@@ -530,7 +556,7 @@ app.put('/api/brand/:id', function(request, response) {
   });
 });
 
-//brands
+//cars
 app.get('/api/cars', function(request, response) {
   car_brands.getCars(function (rows) {
     response.json(rows)
@@ -565,6 +591,113 @@ app.delete('/api/car/:id', function(request, response) {
 
 app.put('/api/car/:id', function(request, response) {
   car_brands.updateCar(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+//hq_products
+app.get('/api/headquarter/:idSede/hq_products', function(request, response) {
+  products.getHQProducts(request.params.idSede, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/hq_products', function(request, response) {
+  products.createHQProduct(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/hq_products/bill', function(request, response) {
+  products.bill(request.body, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/hq_products/bills', function(request, response) {
+  products.getBills(function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/bill/:idPedido', function(request, response) {
+  products.getBill(request.params.idPedido, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/bill_products/:idPedido', function(request, response) {
+  products.getBillProducts(request.params.idPedido, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/payments', function(request, response) {
+  products.getPayments(function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/add_bill', function(request, response) {
+  products.getPayments(function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/pay', function(request, response) {
+  products.getPayments(function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.post('/api/search', function(request, response) {
+  var p = request.body;
+  products.search(p.id, p.x, p.y, function(rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+//routes
+app.get('/api/routes', function(request, response) {
+  routes.getRoutes(function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/route/:id', function(request, response) {
+  routes.getRoute(request.params.id, function (rows) {
+    response.json(rows)
+  }, function (err) {
+    response.status(500).send({ error: err })
+  });
+});
+
+app.get('/api/route/:id/positions', function(request, response) {
+  routes.getRoutePositions(request.params.id, function (rows) {
     response.json(rows)
   }, function (err) {
     response.status(500).send({ error: err })
